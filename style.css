@@ -1,0 +1,52 @@
+body {
+    background-color: rgb(68, 68, 241);
+    margin: 0;
+    padding: 0 ;
+}
+
+h1 {
+    text-align: center;
+    color: snow;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.board {
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+    background-color: black;
+    cursor: pointer;
+    box-sizing: border-box;
+    border-collapse: separate;
+    border: 1px solid black;
+    border-style: none;
+}
+
+.game {
+    border-collapse: separate;
+    /* border-spacing: 4px; */
+}
+
+.cell {
+    width: 20px;
+    height: 20px;
+    /* border-radius: 5px; */
+    color: black;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid black;
+    /* vertical-align: middle; */
+}
+
+
+.hidden {
+    width: 20px;
+    height: 20px;
+    background-color: rgb(255, 174, 0);
+    padding: 0;
+    margin: 0 auto;
+    vertical-align: middle;
+
+}
