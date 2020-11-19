@@ -1,13 +1,73 @@
 body {
-    background-color: rgb(68, 68, 241);
-    margin: 0;
-    padding: 0 ;
+    background-image: url('../img/space.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    padding: 0;
 }
 
 h1 {
     text-align: center;
     color: snow;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Goldman', cursive;
+}
+
+.nav-bar{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    border: 1px transparent goldenrod;
+    background-color: transparent;
+}
+
+.nav-bar > button {
+    width: 10%;
+    height: 40px;
+    font-family: 'Goldman', cursive;
+}
+
+.timer {
+    width: 100px;
+    height: 30px;
+    position: relative;
+    border-radius: 5px;
+    border-color: black;
+    color: black;
+    font-family: 'Goldman', cursive;
+    background-color: #fff;
+    
+}
+
+.hints{
+    width: 100px;
+    height: 60px;  
+    display: flex;
+    align-items: center;
+}
+
+.hint {
+    width: 30px;
+    height: 60px;
+    font-size:24px;
+    background-color: transparent;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+    text-align: center;
+}
+
+.hint-light {
+    background-color: lightgreen;
+}
+
+.restartButton {
+    width: 30px;
+    height: 30px;  
+    background-color: #fff; 
+    font-size: 24px;
 }
 
 .board {
@@ -20,31 +80,36 @@ h1 {
     border-collapse: separate;
     border: 1px solid black;
     border-style: none;
+    font-family: 'Goldman', cursive;
 }
 
 .game {
     border-collapse: separate;
-    /* border-spacing: 4px; */
 }
 
 .cell {
     width: 20px;
     height: 20px;
-    /* border-radius: 5px; */
+    font-family: 'Goldman', cursive;
     color: black;
     padding: 0;
     margin: 0;
     text-align: center;
-    background-color: #fff;
+    background-color: #d0d5db;
     border: 1px solid black;
-    /* vertical-align: middle; */
+   
 }
 
+td {
+    width: 20px;
+    height: 20px;
+    font-size: 15px;
+}
 
 .hidden {
     width: 20px;
     height: 20px;
-    background-color: rgb(255, 174, 0);
+    background-color:#292f3d;
     padding: 0;
     margin: 0 auto;
     vertical-align: middle;

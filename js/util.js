@@ -80,28 +80,6 @@ function getEmptyCells() {
     return emptyBoardCells;
 }
 
-function checkGameOver() {
-    for (var i = 0; i < gBoard.length; i++) {
-        for (var j = 0; j < gBoard[i].length; j++) {
-            var cell = gBoard[i][j]
-            if (!cell.isShown && !cell.isMine || !cell.isMarked && cell.isMine) return;
-        }
-    }
-    gameOver(true)
-}
-
-function gameOver(isWin) {
-    clearInterval(gTimeInterval)
-    gElSmiley = document.querySelector('.restartButton')
-    if (!isWin) {
-        gElSmiley.innerText = LOSEFACE;
-        alert('You lost')
-    }
-    if (isWin) {
-        gElSmiley = WINFACE;
-        alert('You won!')
-    }
-}
 
 function displayCell(cellCoord) {
     var cell = gBoard[cellCoord.i][cellCoord.j];

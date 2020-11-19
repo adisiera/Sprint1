@@ -4,11 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Goldman&display=swap" rel="stylesheet">
     <title>Mine Sweeper</title>
 </head>
 
 <body onload="initGame()">
-    <h1>Mine Sweeper</h1>
+    <h1>Space Sweeper</h1>
+
+    <div class="nav-bar">
+        <div class="timer"></div>
+        <div class="hints"></div>
+        <button class="restartButton" onclick="initGame()"></button>
+        <button class="levelBtn" onclick="easyLevel()">Easy</button>
+        <button class="levelBtn" onclick="mediumLevel()">Medium</button>
+        <button class="levelBtn" onclick="hardLevel()">Hard</button>
+    </div>
 
     <table class="board">
         <tbody class="game">
