@@ -1,9 +1,8 @@
 'use strict';
 
 
-function placeMines(board) {
+function placeMines(board,currCell = 0) {
     var mines = gLevel.MINES
-    var currCell = 0;
     for (var i = 0; i < mines; i++) {
         var randRow = getRandomInt(0, gLevel.SIZE)
         var randCol = getRandomInt(0, gLevel.SIZE)
@@ -47,8 +46,7 @@ function displayAllMines(board) {
         for (var j = 0; j < board[0].length; j++) {
             var cell = board[i][j]
             if (cell.isMine) {
-                var elCell = document.querySelector(`.cell${i}-${j}`)
-                elCell.classList.remove('hidden');
+                displayCell(i,j)
             }
         }
     }

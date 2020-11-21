@@ -1,12 +1,15 @@
 'use strict';
+//CONSTS: 
 const FLAG = '🇮🇱';
 const GAMEFACE = '🧑🏼‍🚀';
 const WINFACE = '🤩';
 const LOSEFACE = '🥶';
-const HINT = '👽';
+const HINT = '💫';
 const MINE = '💥';
+const LIFE = '👽'
 const EMPTY = ' ';
 
+//GLOBAL VARS:
 var gBoard;
 var gGame = {
     isOn: false,
@@ -18,15 +21,21 @@ var gLevel = {
     SIZE: 4,
     MINES: 2
 };
-
 var gFirstClick = true
 var gTimeInterval;
 var gStartTime;
 var gLastScore;
 
+//ELEMENT GRAB AREA:
 var gElSmiley = document.querySelector('.restartButton');
+
+
+//HINT AREA:
 var gIsHint = false;
 var gHints = [];
+
+//LIVES AREA:
+var gLives = 3;
 
 
 function easyLevel() {
@@ -42,27 +51,31 @@ function mediumLevel() {
 }
 function hardLevel() {
     gLevel.SIZE = 12;
-    gLevel.MINES = 25;
+    gLevel.MINES = 30;
     initGame()
 }
 
-function restartGame(){
+function restartGame() {
     if (gTimeInterval) clearInterval(gTimeInterval);
     gTimeInterval = null;
     var elTimer = document.querySelector('.timer');
     elTimer.innerText = '0';
+    elTimer.style.fontSize = '25px';
     gStartTime = 0;
+    gLives = 3;
     gFirstClick = true;
 }
 
 function initGame() {
     restartGame()
+    closeModal()
     gGame.isOn = true;
     gBoard = buildBoard();
     placeMines(gBoard)
     countMinesAroundNegs(gBoard)
     gElSmiley.innerText = GAMEFACE;
     createHints()
+    renderLives()
     renderBoard(gBoard)
 }
 
@@ -74,7 +87,6 @@ function renderBoard(board) {
         for (var j = 0; j < board[0].length; j++) {
             var cell = board[i][j];
             var cellContent = (cell.isMine) ? MINE : cell.minesaroundcount;
-            // var cellClass = (!cell.isShown) ? 'hidden' : 'cell';
             var cellClass = `hidden`;
             strHTML += `<td class = "cell ${cellClass} cell-${i}-${j}" 
             onclick = "cellClicked(this,${i},${j})"
@@ -106,12 +118,14 @@ function buildBoard() {
     return board;
 }
 
+//IS THE GAME OVER AREA:
 
+//this function only checks for a win because a loss is defined by stepping on a mine
 function checkGameOver() {
     for (var i = 0; i < gBoard.length; i++) {
         for (var j = 0; j < gBoard[i].length; j++) {
             var cell = gBoard[i][j]
-            if (!cell.isShown && !cell.isMine || !cell.isMarked && cell.isMine) return;
+            if (!cell.isShown && !cell.isMine || !cell.isMarked && cell.isMine && !cell.isShown) return;
         }
     }
     gameOver(true)
@@ -121,20 +135,30 @@ function gameOver(isWin) {
     gGame.isOn = false;
     clearInterval(gTimeInterval)
     if (!isWin) {
-        // alert('You lost')
+        var elModal = document.querySelector('.modal');
+        var elModalTitle = document.querySelector('h3 span')
+        displayAllMines(gBoard);
         console.log('YOU LOST')
+        elModal.style.display = 'block';
+        elModalTitle.innerText = 'You lost';
         gElSmiley.innerText = LOSEFACE;
     }
     else if (isWin) {
-        // alert('You won!')
+        var elModal = document.querySelector('.modal');
+        var elModalTitle = document.querySelector('h3 span')
         console.log('VICTORY')
+        elModal.style.display = 'block';
+        elModalTitle.innerText = 'You won!';
         gElSmiley.innerText = WINFACE;
     }
+}
 
+function closeModal() {
+    var elModal = document.querySelector('.modal');
+    elModal.style.display = 'none';
 }
 
 //MAKING HINTS:
-
 function createHints() {
     var hints = 3;
     for (var i = 0; i < hints; i++) {
@@ -156,7 +180,7 @@ function giveHint(elHint, i) {
     if (!gHints.includes(i)) return;
     gHints.splice(i, 1);
     gIsHint = true;
-    elHint.style.backgroundColor = "lightgreen";
+    elHint.style.backgroundColor = "#12131b";
     elHint.onclick = '';
 }
 
@@ -197,12 +221,12 @@ function removeHint(cellI, cellJ, board, shownHints) {
             var elCell = document.querySelector(`.cell-${i}-${j}`);
             elCell.classList.add('hidden')
             elCell.innerText = ' ';
-
         }
     }
     gIsHint = false;
 }
 
+//MAKING A TIMER: 
 function startTimer() {
     gStartTime = Date.now();
     gTimeInterval = setInterval(timeCounter, 30);
@@ -218,7 +242,18 @@ function timeCounter() {
     elTimeCounter.innerText = `${secondsPassed}`;
 }
 
+//MAKING LIVES:
+function renderLives() {
+    var strHTML = ''
+    for (var i = 0; i < gLives; i++) {
+        strHTML += `<button class="lives${i}">${LIFE}</button>`
+    }
+    var elLives = document.querySelector('.lives')
+    elLives.innerHTML = strHTML
+}
 
+
+//THE MOST USEFUL FUNCTION IN THE WHOLE INTERNET: 
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min) + min); // Min is inclusive, Max is Exclusive
 }

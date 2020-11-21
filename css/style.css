@@ -10,48 +10,57 @@ h1 {
     text-align: center;
     color: snow;
     font-family: 'Goldman', cursive;
+    font-size: 40px;
 }
 
-.nav-bar{
+.nav-bar {
     display: flex;
     justify-content: center;
     position: relative;
     align-items: center;
     height: 60px;
     width: 100%;
-    border: 1px transparent goldenrod;
-    background-color: transparent;
+    margin-bottom: 30px;
 }
 
-.nav-bar > button {
+.nav-bar>button {
     width: 10%;
     height: 40px;
     font-family: 'Goldman', cursive;
+    background: #d0d5db;
+    opacity: 0.88;
+    font-size: 16px;
+    border: transparent;
+    margin: 5px;
+    transition: all 0.2s;
+    cursor: pointer;
 }
 
 .timer {
     width: 100px;
     height: 30px;
     position: relative;
-    border-radius: 5px;
     border-color: black;
     color: black;
     font-family: 'Goldman', cursive;
-    background-color: #fff;
-    
+    background-color: #d0d5db;
+    opacity: 0.88;
+    text-align: center;
 }
 
-.hints{
+.hints {
     width: 100px;
-    height: 60px;  
+    height: 60px;
     display: flex;
     align-items: center;
+    padding-left: 15px;
+    cursor: pointer;
 }
 
 .hint {
     width: 30px;
-    height: 60px;
-    font-size:24px;
+    height: 40px;
+    font-size: 24px;
     background-color: transparent;
     outline: none;
     border: 0;
@@ -59,59 +68,96 @@ h1 {
     text-align: center;
 }
 
-.hint-light {
-    background-color: lightgreen;
+.lives {
+    width: 100px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+}
+
+.lives>button {
+    width: 30px;
+    height: 40px;
+    font-size: 24px;
+    background-color: transparent;
+    outline: none;
+    border: 0;
+    text-align: center;
 }
 
 .restartButton {
     width: 30px;
-    height: 30px;  
-    background-color: #fff; 
+    height: 30px;
+    background-color: #fff;
     font-size: 24px;
+    opacity: 0.88;
+}
+
+.modal {
+    width: 200px;
+    height: 200px;
+    background-color: #8cb5f6;
+    display: none;
+    text-align: center;
+    margin: 0 auto;
+    font-family: 'Goldman', cursive;
+    opacity: 0.9;
+    position: absolute;
+    z-index: 2;
+    left: 43%;
+}
+
+.modal>h3 {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.modal>button {
+    font-family: 'Goldman', cursive;
+    font-size: 16px;
+    transition: all 0.2s;
+    text-align: center;
 }
 
 .board {
     width: 400px;
     height: 400px;
     margin: 0 auto;
-    background-color: black;
+    background-color: #8eb6de;
     cursor: pointer;
     box-sizing: border-box;
     border-collapse: separate;
-    border: 1px solid black;
+    border: 1px solid #8eb6de;
     border-style: none;
     font-family: 'Goldman', cursive;
+    opacity: 0.88;
+    transition: all 0.2s;
+    position: relative;
 }
 
-.game {
+.game .cell{
     border-collapse: separate;
 }
 
 .cell {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     font-family: 'Goldman', cursive;
     color: black;
     padding: 0;
     margin: 0;
     text-align: center;
     background-color: #d0d5db;
-    border: 1px solid black;
-   
-}
-
-td {
-    width: 20px;
-    height: 20px;
-    font-size: 15px;
+    border: 1px solid #7496b8;
+    font-size: 14px;
 }
 
 .hidden {
-    width: 20px;
-    height: 20px;
-    background-color:#292f3d;
+    width: 25px;
+    height: 25px;
+    background-color: #292f3d;
     padding: 0;
     margin: 0 auto;
     vertical-align: middle;
-
 }
